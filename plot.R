@@ -12,6 +12,8 @@ KouseiCovid2020 %>%
   geom_line() +
   scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
   labs(x = "Date", y = "Newly Confirmed Cases", title = "Tokyo") +
+  stat_smooth(color = "#FC4E07", fill = "#FC4E07",
+              method = "gam", se = F) +
   theme_linedraw()
 
 Shukuhaku2020 %>% 

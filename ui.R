@@ -89,7 +89,7 @@ navbarPage(
   #            tableOutput("covid_data")
   #            ))),
   
-  tabPanel("Covid Data",
+  tabPanel("COVID-19 Data",
            fluidPage(
              div(
                selectInput("selected_prefecture_3",

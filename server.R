@@ -69,6 +69,8 @@ function(input, output, session) {
       scale_y_continuous(labels = scales::comma) +
       labs(x = "Date", y = "Newly Confirmed Cases",
            title = paste("Total New COVID-19 Infections in", input$selected_prefecture)) +
+      stat_smooth(color = "#FC4E07", fill = "#FC4E07",
+                  method = "gam", se = F) +
       theme_linedraw()
   })
   
