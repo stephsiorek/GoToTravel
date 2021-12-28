@@ -1,19 +1,5 @@
-# navbarPage(
-#   "My first app",
-#   tabPanel("About"),
-#   tabPanel("Contact")
-# )
-
-# fluidPage(
-#   sliderInput("exponent",
-#               label = "Choose an exponent",
-#               min = 1,
-#               max = 5,
-#               value = 2),
-#   plotOutput("curve_plot")
-# )
-
 library("leaflet")
+library("shinycustomloader")
 
 navbarPage(
   "The impact of the 'Go to Travel' subsidy program on the increase in overall disease transmission in Japan during the 2020 COVID-19 pandemic",
@@ -37,7 +23,8 @@ navbarPage(
                            )),
                style = "position:relative;z-index:10000;"
              ),
-             plotOutput("covid_plot")
+             actionButton("update_chart", label = "Update chart", width = "100%"),
+             withLoader(plotOutput("covid_plot"))
            )),
   
   tabPanel("Accommodation",
@@ -63,9 +50,22 @@ navbarPage(
               #             choices = c("Guests_Total", "Guests_Prefecture",
               #                         "Guests_OutsidePrefecture")
               # ),
+              # selectInput("selected_column",
+              #             "Selected data:",
+              #             choices = c("Total Guests" = "Guests_Total",
+              #                         "Guests From the Prefecture" = "Guests_Prefecture",
+              #                         "Guests From Outside of the Prefecture" = "Guests_OutsidePrefecture",
+              #                         "Accommodation Type: Ryokan" = "Type_Ryokan",
+              #                         "Accommodation Type: Resort Hotel" = "Type_Resort",
+              #                         "Accommodation Type: Business Hotel" = "Type_Business",
+              #                         "Accommodation Type: City Hotel" = "Type_City",
+              #                         "Accommodation Type: Simple Lodging" = "Type_Simple",
+              #                         "Accommodation Type: Accommodation for Companies and Groups" = "Type_CompaniesGroups"
+              #                         
+              #             ),
                style = "position:relative;z-index:10000;"
              ),
-             plotOutput("shukuhaku_plot")
+             withLoader(plotOutput("shukuhaku_plot"))
            )),
   
   # tabPanel("Covid Data",
@@ -130,9 +130,17 @@ navbarPage(
                            )),
                 selectInput("selected_column2",
                             "Selected data:",
-                            choices = c("Total Guests",
-                                        "Guests From the Prefecture",
-                                        "Guests From Outside of the Prefecture")
+                            choices = c("Total Guests" = "Guests_Total",
+                                        "Guests From the Prefecture" = "Guests_Prefecture",
+                                        "Guests From Outside of the Prefecture" = "Guests_OutsidePrefecture",
+                                        "Accommodation Type: Ryokan" = "Type_Ryokan",
+                                        "Accommodation Type: Resort Hotel" = "Type_Resort",
+                                        "Accommodation Type: Business Hotel" = "Type_Business",
+                                        "Accommodation Type: City Hotel" = "Type_City",
+                                        "Accommodation Type: Simple Lodging" = "Type_Simple",
+                                        "Accommodation Type: Accommodation for Companies and Groups" = "Type_CompaniesGroups"
+                                        
+                            )
                 ),
                DT::DTOutput("shukuhaku_data")
              ))),
