@@ -1,12 +1,3 @@
-# function(input, output, session){
-#   
-#   output$curve_plot <- renderPlot({
-#     curve(x ^ input$exponent, from = -5, to = 5)
-#   })
-#   
-# }
-
-
 library("tidyverse")
 library("leaflet")
 library("leaflet.extras")
@@ -52,18 +43,18 @@ function(input, output, session) {
                                    selected = input$selected_prefecture_4)
                })
   
-  observeEvent(input$selected_column1,
+  observeEvent(input$selected_column_1,
                {
                  updateSelectInput(session,
-                                   "selected_column1",
-                                   selected = input$selected_column1)
+                                   "selected_column_1",
+                                   selected = input$selected_column_1)
                })
   
-  observeEvent(input$selected_column2,
+  observeEvent(input$selected_column_2,
                {
                  updateSelectInput(session,
-                                   "selected_column2",
-                                   selected = input$selected_column2)
+                                   "selected_column_2",
+                                   selected = input$selected_column_2)
                })
   
   output$covid_plot <- renderPlotly({
@@ -75,83 +66,36 @@ function(input, output, session) {
     }
     
     KouseiCovid2020 %>%
-      filter(Prefecture == isolate(input$selected_prefecture)) %>% 
-      mutate(Date = as.POSIXct(Date)) %>% 
-      ggplot(., aes(x = Date, y = NewlyConfirmedCases, group = 1)) +
+      filter(Prefecture == isolate(input$selected_prefecture)) %>%
+      mutate(Date = as.POSIXct(Date)) %>%
+      ggplot(., aes_string(x = "Date", y = input$selected_column_1), group = 1) +
       geom_line() +
       scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
       scale_y_continuous(labels = scales::comma) +
-      labs(x = "Date", y = "Newly Confirmed Cases",
-           title = paste("Total New COVID-19 Infections in", isolate(input$selected_prefecture))) +
+      labs(x = "Date", y = " ") +
       stat_smooth(color = "#FC4E07", fill = "#FC4E07",
-                  method = "gam", se = F) +
+                  method = "gam", se = F, size = 0.8) +
       theme_linedraw()
   })
-  
-  # output$shukuhaku_plot <- renderPlotly({
-  #   Shukuhaku2020 %>%
-  #     filter(Prefecture == input$selected_prefecture_2) %>%
-  #     mutate(Date = as.POSIXct(Date)) %>%
-  #     ggplot(., aes(x = Date, y = Guests_Total, group = 1)) +
-  #     geom_line() +
-  #     scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
-  #     scale_y_continuous(labels = scales::comma) +
-  #     labs(x = "Date", y = "Total Guests",
-  #          title = paste("Total Number of Guests in", input$selected_prefecture_2)) +
-  #     #, title = paste(input$selected_column,
-  #                                                      #  "in",
-  #                                                       # input$selected_prefecture_2)) +
-  #     theme_linedraw()
-  # })
   
   output$shukuhaku_plot <- renderPlotly({
+    
+    print(input$update_chart_2)
+    
+    if(input$update_chart_2 == 0){
+      return()
+    }
+    
     Shukuhaku2020 %>%
-      filter(Prefecture == input$selected_prefecture_2) %>%
+      filter(Prefecture == isolate(input$selected_prefecture_2)) %>%
       mutate(Date = as.POSIXct(Date)) %>%
-      ggplot(data = ., aes_string(x = "Date", y = "Guests_Total", group = 1)) +
+      ggplot(., aes_string(x = "Date", y = input$selected_column_2, group = 1)) +
       geom_line() +
       scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
       scale_y_continuous(labels = scales::comma) +
-      labs(x = "Date", y = "",
-           title = paste("Total Number of Guests in", input$selected_prefecture_2)) +
+      labs(x = "Date", y = "") +
       theme_linedraw()
   })
-  
-  # Shukuhaku2020 %>%
-  #   reactive(filter(., Prefecture == input$selected_prefecture_2)) %>%
-  #   mutate(Date = as.POSIXct(Date)) %>% 
-  #   mutate(Column = input$selected_column1) -> Shukuhaku2020_1
-  # output$shukuhaku_plot <- renderPlotly({
-  #   Shukuhaku2020_1 %>%
-  #     ggplot(data = ., aes_string(x = "Date", y = "Column", group = 1)) +
-  #     geom_line() +
-  #     scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
-  #     scale_y_continuous(labels = scales::comma) +
-  #     labs(x = "Date", y = input$selected_column1,
-  #          title = paste("... in", input$selected_prefecture_2)) +
-  #     theme_linedraw()
-  # })
-  
-  # output$shukuhaku_plot <- renderPlot({
-  #   Shukuhaku2020 %>% 
-  #     filter(Prefecture == input$selected_prefecture_2) %>% 
-  #     mutate(Date = as.POSIXct(Date)) %>% 
-  #     ggplot(., aes(x = Date, y = input$selected_column, group = 1)) +
-  #     geom_line() +
-  #     scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
-  #     scale_y_continuous(labels = scales::comma) +
-  #     labs(x = "Date", y = "input$selected_column",
-  #          title = paste(input$selected_column, "in", input$selected_prefecture_2)) +
-  #     theme_linedraw()
-  # })
-  
-  # output$covid_data <- function(){
-  #   KouseiCovid2020 %>% 
-  #     filter(Prefecture == input$selected_prefecture_3) %>% 
-  #     kable() %>% 
-  #     kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  #     htmltools::HTML()
-  # }
   
   output$covid_data <- DT::renderDT({
     KouseiCovid2020 %>% 
