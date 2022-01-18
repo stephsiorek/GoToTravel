@@ -65,6 +65,14 @@ function(input, output, session) {
       return()
     }
     
+    mytitle <- if(input$selected_column_1 == "NewlyConfirmedCases"){
+      print("New COVID-19 Cases in")
+    } else if(input$selected_column_1 == "NumberOfDeaths"){
+      print("Number of COVID-19 Related Deaths in")
+    } else if(input$selected_column_1 == "SevereCases"){
+      print("Severe COVID-19 Cases in")
+    }
+    
     KouseiCovid2020 %>%
       filter(Prefecture == isolate(input$selected_prefecture)) %>%
       mutate(Date = as.POSIXct(Date)) %>%
@@ -72,7 +80,7 @@ function(input, output, session) {
       geom_line() +
       scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
       scale_y_continuous(labels = scales::comma) +
-      labs(x = "Date", y = " ") +
+      labs(x = "Date", y = " ", title = paste(mytitle, input$selected_prefecture)) +
       stat_smooth(color = "#FC4E07", fill = "#FC4E07",
                   method = "gam", se = F, size = 0.8) +
       theme_linedraw()
@@ -86,6 +94,92 @@ function(input, output, session) {
       return()
     }
     
+    mytitle_2 <- if(input$selected_column_2 == "Guests_Total"){
+      print("Total Guests in")
+    } else if(input$selected_column_2 == "Guests_Prefecture"){
+      print("Guests from")
+    } else if(input$selected_column_2 == "Guests_OutsidePrefecture"){
+      print("Guests from Outside of")
+    } else if(input$selected_column_2 == "Type_Ryokan"){
+      print("Guests Staying in a Ryokan in")
+    } else if(input$selected_column_2 == "Type_Resort"){
+      print("Guests Staying in a Resort Hotel in")
+    } else if(input$selected_column_2 == "Type_Business"){
+      print("Guests Staying in a Business Hotel in")
+    } else if(input$selected_column_2 == "Type_City"){
+      print("Guests Staying in a City Hotel in")
+    } else if(input$selected_column_2 == "Type_Simple"){
+      print("Guests Staying in a Simple Lodging in")
+    } else if(input$selected_column_2 == "Type_CompaniesGroups"){
+      print("Guests Staying in an Accommodation for Companies and Groups in")
+    } else if(input$selected_column_2 == "Pref_Ryokan"){
+      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Ryokan in"))
+    } else if(input$selected_column_2 == "Pref_Resort"){
+      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Resort Hotel in"))
+    } else if(input$selected_column_2 == "Pref_Business"){
+      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Business Hotel in"))
+    } else if(input$selected_column_2 == "Pref_City"){
+      print(paste("Guests from", input$selected_prefecture_2, "Staying in a City Hotell in"))
+    } else if(input$selected_column_2 == "Pref_Simple"){
+      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Simple Lodging in"))
+    } else if(input$selected_column_2 == "Pref_CompaniesGroups"){
+      print(paste("Guests from", input$selected_prefecture_2, "Staying in an Accommodation for Companies and Groups in"))
+    } else if(input$selected_column_2 == "Out_Ryokan"){
+      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Ryokan in"))
+    } else if(input$selected_column_2 == "Out_Resort"){
+      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Resort Hotel in"))
+    } else if(input$selected_column_2 == "Out_Business"){
+      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Business Hotel in"))
+    } else if(input$selected_column_2 == "Out_City"){
+      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a City Hotell in"))
+    } else if(input$selected_column_2 == "Out_Simple"){
+      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Simple Lodging in"))
+    } else if(input$selected_column_2 == "Out_CompaniesGroups"){
+      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in an Accommodation for Companies and Groups in"))
+    } else if(input$selected_column_2 == "Occupancy_Rate"){
+      print(paste("Occupancy Rate in"))
+    } else if(input$selected_column_2 == "Occupancy_Tourists"){
+      print(paste("Tourist Occupancy Rate in"))
+    } else if(input$selected_column_2 == "Occupancy_NonTourists"){
+      print(paste("Non Tourist Occupancy Rate in"))
+    } else if(input$selected_column_2 == "Occupancy_0to9"){
+      print(paste("Occupancy Rate for Accommodation with 0-9 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_Tourists_0to9"){
+      print(paste("Tourist Occupancy Rate for Accommodation with 0-9 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_NonTourists_0to9"){
+      print(paste("Non Tourist Occupancy Rate for Accommodation with 0-9 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_10to19"){
+      print(paste("Occupancy Rate for Accommodation with 10-19 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_Tourists_10to19"){
+      print(paste("Tourist Occupancy Rate for Accommodation with 10-19 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_NonTourists_10to19"){
+      print(paste("Non Tourist Occupancy Rate for Accommodation with 10-19 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_30to99"){
+      print(paste("Occupancy Rate for Accommodation with 30-99 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_Tourists_30to99"){
+      print(paste("Tourist Occupancy Rate for Accommodation with 30-99 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_NonTourists_30to99"){
+      print(paste("Non Tourist Occupancy Rate for Accommodation with 30-99 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_over100"){
+      print(paste("Occupancy Rate for Accommodation with over 100 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_Tourists_over100"){
+      print(paste("Tourist Occupancy Rate for Accommodation with over 100 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_NonTourists_over100"){
+      print(paste("Non Tourist Occupancy Rate for Accommodation with over 100 employees in"))
+    } else if(input$selected_column_2 == "Occupancy_Ryokan"){
+      print(paste("Occupancy Rate of Ryokans in"))
+    } else if(input$selected_column_2 == "Occupancy_Resort"){
+      print(paste("Occupancy Rate of Resort Hotels in"))
+    } else if(input$selected_column_2 == "Occupancy_Business"){
+      print(paste("Occupancy Rate of Business Hotels in"))
+    } else if(input$selected_column_2 == "Occupancy_City"){
+      print(paste("Occupancy Rate of City Hotels in"))
+    } else if(input$selected_column_2 == "Occupancy_Simple"){
+      print(paste("Occupancy Rate of Simple Lodging in"))
+    } else if(input$selected_column_2 == "Occupancy_CompaniesGroups"){
+      print(paste("Occupancy Rate of Accommodation for Companies and Groups in"))
+    }
+    
     Shukuhaku2020 %>%
       filter(Prefecture == isolate(input$selected_prefecture_2)) %>%
       mutate(Date = as.POSIXct(Date)) %>%
@@ -93,7 +187,7 @@ function(input, output, session) {
       geom_line() +
       scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
       scale_y_continuous(labels = scales::comma) +
-      labs(x = "Date", y = "") +
+      labs(x = "Date", y = "", title = paste(mytitle_2, input$selected_prefecture_2)) +
       theme_linedraw()
   })
   
