@@ -9,9 +9,11 @@ library("plotly")
 library("dplyr")
 library("ggplot2")
 
-setwd("/Users/steph/Downloads/MGR")
-load("./Clean Data/KouseiCovid2020.RData")
-load("./Clean Data/Shukuhaku2020.RData")
+# setwd("/Users/steph/Downloads/MGR")
+# load("./Clean Data/KouseiCovid2020.RData")
+# load("./Clean Data/Shukuhaku2020.RData")
+load("KouseiCovid2020.RData")
+load("Shukuhaku2020.RData")
 
 function(input, output, session) {
   
@@ -59,18 +61,18 @@ function(input, output, session) {
   
   output$covid_plot <- renderPlotly({
     
-    print(input$update_chart)
-    
-    if(input$update_chart == 0){
-      return()
-    }
+    # print(input$update_chart)
+    # 
+    # if(input$update_chart == 0){
+    #   return()
+    # }
     
     mytitle <- if(input$selected_column_1 == "NewlyConfirmedCases"){
-      print("New COVID-19 Cases in")
+      print("Number of Newly Confirmed COVID-19 Cases in")
     } else if(input$selected_column_1 == "NumberOfDeaths"){
       print("Number of COVID-19 Related Deaths in")
     } else if(input$selected_column_1 == "SevereCases"){
-      print("Severe COVID-19 Cases in")
+      print("Number of Severe COVID-19 Cases in")
     }
     
     KouseiCovid2020 %>%
@@ -88,84 +90,84 @@ function(input, output, session) {
   
   output$shukuhaku_plot <- renderPlotly({
     
-    print(input$update_chart_2)
-    
-    if(input$update_chart_2 == 0){
-      return()
-    }
+    # print(input$update_chart_2)
+    # 
+    # if(input$update_chart_2 == 0){
+    #   return()
+    # }
     
     mytitle_2 <- if(input$selected_column_2 == "Guests_Total"){
-      print("Total Guests in")
+      print("Total Number of Guests in")
     } else if(input$selected_column_2 == "Guests_Prefecture"){
-      print("Guests from")
+      print("Total Number of Guests from")
     } else if(input$selected_column_2 == "Guests_OutsidePrefecture"){
-      print("Guests from Outside of")
+      print("Total Number of Guests from Outside of")
     } else if(input$selected_column_2 == "Type_Ryokan"){
-      print("Guests Staying in a Ryokan in")
+      print("Total Number of Guests Staying in a Ryokan in")
     } else if(input$selected_column_2 == "Type_Resort"){
-      print("Guests Staying in a Resort Hotel in")
+      print("Total Number of Guests Staying in a Resort Hotel in")
     } else if(input$selected_column_2 == "Type_Business"){
-      print("Guests Staying in a Business Hotel in")
+      print("Total Number of Guests Staying in a Business Hotel in")
     } else if(input$selected_column_2 == "Type_City"){
-      print("Guests Staying in a City Hotel in")
+      print("Total Number of Guests Staying in a City Hotel in")
     } else if(input$selected_column_2 == "Type_Simple"){
-      print("Guests Staying in a Simple Lodging in")
+      print("Total Number of Guests Staying in a Simple Lodging Facility in")
     } else if(input$selected_column_2 == "Type_CompaniesGroups"){
-      print("Guests Staying in an Accommodation for Companies and Groups in")
+      print("Total Number of Guests Staying in an Accommodation for Companies and Groups in")
     } else if(input$selected_column_2 == "Pref_Ryokan"){
-      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Ryokan in"))
+      print(paste("Total Number of Guests from", input$selected_prefecture_2, "Staying in a Ryokan in"))
     } else if(input$selected_column_2 == "Pref_Resort"){
-      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Resort Hotel in"))
+      print(paste("Total Number of Guests from", input$selected_prefecture_2, "Staying in a Resort Hotel in"))
     } else if(input$selected_column_2 == "Pref_Business"){
-      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Business Hotel in"))
+      print(paste("Total Number of Guests from", input$selected_prefecture_2, "Staying in a Business Hotel in"))
     } else if(input$selected_column_2 == "Pref_City"){
-      print(paste("Guests from", input$selected_prefecture_2, "Staying in a City Hotell in"))
+      print(paste("Total Number of Guests from", input$selected_prefecture_2, "Staying in a City Hotell in"))
     } else if(input$selected_column_2 == "Pref_Simple"){
-      print(paste("Guests from", input$selected_prefecture_2, "Staying in a Simple Lodging in"))
+      print(paste("Total Number of Guests from", input$selected_prefecture_2, "Staying in a Simple Lodging Facility in"))
     } else if(input$selected_column_2 == "Pref_CompaniesGroups"){
-      print(paste("Guests from", input$selected_prefecture_2, "Staying in an Accommodation for Companies and Groups in"))
+      print(paste("Total Number of Guests from", input$selected_prefecture_2, "Staying in an Accommodation for Companies and Groups in"))
     } else if(input$selected_column_2 == "Out_Ryokan"){
-      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Ryokan in"))
+      print(paste("Total Number of Guests from Outside of", input$selected_prefecture_2, "Staying in a Ryokan in"))
     } else if(input$selected_column_2 == "Out_Resort"){
-      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Resort Hotel in"))
+      print(paste("Total Number of Guests from Outside of", input$selected_prefecture_2, "Staying in a Resort Hotel in"))
     } else if(input$selected_column_2 == "Out_Business"){
-      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Business Hotel in"))
+      print(paste("Total Number of Guests from Outside of", input$selected_prefecture_2, "Staying in a Business Hotel in"))
     } else if(input$selected_column_2 == "Out_City"){
-      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a City Hotell in"))
+      print(paste("Total Number of Guests from Outside of", input$selected_prefecture_2, "Staying in a City Hotell in"))
     } else if(input$selected_column_2 == "Out_Simple"){
-      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in a Simple Lodging in"))
+      print(paste("Total Number of Guests from Outside of", input$selected_prefecture_2, "Staying in a Simple Lodging Facility in"))
     } else if(input$selected_column_2 == "Out_CompaniesGroups"){
-      print(paste("Guests from Outside of", input$selected_prefecture_2, "Staying in an Accommodation for Companies and Groups in"))
+      print(paste("Total Number of Guests from Outside of", input$selected_prefecture_2, "Staying in an Accommodation for Companies and Groups in"))
     } else if(input$selected_column_2 == "Occupancy_Rate"){
       print(paste("Occupancy Rate in"))
     } else if(input$selected_column_2 == "Occupancy_Tourists"){
       print(paste("Tourist Occupancy Rate in"))
     } else if(input$selected_column_2 == "Occupancy_NonTourists"){
-      print(paste("Non Tourist Occupancy Rate in"))
+      print(paste("Non-tourist Occupancy Rate in"))
     } else if(input$selected_column_2 == "Occupancy_0to9"){
-      print(paste("Occupancy Rate for Accommodation with 0-9 employees in"))
+      print(paste("Occupancy Rate of Accommodation with 0-9 employees in"))
     } else if(input$selected_column_2 == "Occupancy_Tourists_0to9"){
-      print(paste("Tourist Occupancy Rate for Accommodation with 0-9 employees in"))
+      print(paste("Tourist Occupancy Rate of Accommodation with 0-9 employees in"))
     } else if(input$selected_column_2 == "Occupancy_NonTourists_0to9"){
-      print(paste("Non Tourist Occupancy Rate for Accommodation with 0-9 employees in"))
+      print(paste("Non-tourist Occupancy Rate of Accommodation with 0-9 employees in"))
     } else if(input$selected_column_2 == "Occupancy_10to19"){
-      print(paste("Occupancy Rate for Accommodation with 10-19 employees in"))
+      print(paste("Occupancy Rate of Accommodation with 10-19 employees in"))
     } else if(input$selected_column_2 == "Occupancy_Tourists_10to19"){
-      print(paste("Tourist Occupancy Rate for Accommodation with 10-19 employees in"))
+      print(paste("Tourist Occupancy Rate of Accommodation with 10-19 employees in"))
     } else if(input$selected_column_2 == "Occupancy_NonTourists_10to19"){
-      print(paste("Non Tourist Occupancy Rate for Accommodation with 10-19 employees in"))
+      print(paste("Non-tourist Occupancy Rate of Accommodation with 10-19 employees in"))
     } else if(input$selected_column_2 == "Occupancy_30to99"){
-      print(paste("Occupancy Rate for Accommodation with 30-99 employees in"))
+      print(paste("Occupancy Rate of Accommodation with 30-99 employees in"))
     } else if(input$selected_column_2 == "Occupancy_Tourists_30to99"){
-      print(paste("Tourist Occupancy Rate for Accommodation with 30-99 employees in"))
+      print(paste("Tourist Occupancy Rate of Accommodation with 30-99 employees in"))
     } else if(input$selected_column_2 == "Occupancy_NonTourists_30to99"){
-      print(paste("Non Tourist Occupancy Rate for Accommodation with 30-99 employees in"))
+      print(paste("Non-tourist Occupancy Rate of Accommodation with 30-99 employees in"))
     } else if(input$selected_column_2 == "Occupancy_over100"){
-      print(paste("Occupancy Rate for Accommodation with over 100 employees in"))
+      print(paste("Occupancy Rate of Accommodation with over 100 employees in"))
     } else if(input$selected_column_2 == "Occupancy_Tourists_over100"){
-      print(paste("Tourist Occupancy Rate for Accommodation with over 100 employees in"))
+      print(paste("Tourist Occupancy Rate of Accommodation with over 100 employees in"))
     } else if(input$selected_column_2 == "Occupancy_NonTourists_over100"){
-      print(paste("Non Tourist Occupancy Rate for Accommodation with over 100 employees in"))
+      print(paste("Non-tourist Occupancy Rate of Accommodation with over 100 employees in"))
     } else if(input$selected_column_2 == "Occupancy_Ryokan"){
       print(paste("Occupancy Rate of Ryokans in"))
     } else if(input$selected_column_2 == "Occupancy_Resort"){
@@ -175,7 +177,7 @@ function(input, output, session) {
     } else if(input$selected_column_2 == "Occupancy_City"){
       print(paste("Occupancy Rate of City Hotels in"))
     } else if(input$selected_column_2 == "Occupancy_Simple"){
-      print(paste("Occupancy Rate of Simple Lodging in"))
+      print(paste("Occupancy Rate of Simple Lodging Facilities in"))
     } else if(input$selected_column_2 == "Occupancy_CompaniesGroups"){
       print(paste("Occupancy Rate of Accommodation for Companies and Groups in"))
     }
