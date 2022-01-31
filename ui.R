@@ -86,7 +86,9 @@ navbarPage(
                                  tags$li(tags$code("Occupancy_City"), "- Occupancy rate of city hotels in each prefecture,"),
                                  tags$li(tags$code("Occupancy_Simple"), "- Occupancy rate of simple lodging facilities in each prefecture,"),
                                  tags$li(tags$code("Occupancy_CompaniesGroups"), "- Occupancy rate of accommodation for companies and groups in each prefecture.")))
-           ))),
+           )),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),
   
   tabPanel("COVID-19 Infections",
            fluidPage(
@@ -115,7 +117,9 @@ navbarPage(
              ),
              #actionButton("update_chart", label = "Update chart", width = "100%"),
              withLoader(plotlyOutput("covid_plot"), type = "html", loader = "loader4")
-           )),
+           ),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),
   
   tabPanel("Accommodation",
            fluidPage(
@@ -184,7 +188,9 @@ navbarPage(
              ),
              #actionButton("update_chart_2", label = "Update chart", width = "100%"),
              withLoader(plotlyOutput("shukuhaku_plot"), type = "html", loader = "loader4")
-           )),
+           ),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),
   
   tabPanel("COVID-19 Data",
            fluidPage(
@@ -205,7 +211,9 @@ navbarPage(
                                        "Yamagata", "Yamaguchi", "Yamanashi"
                            )),
                DT::DTOutput("covid_data")
-             ))),
+             )),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),
   
   tabPanel("Accommodation Data",
            fluidPage(
@@ -272,7 +280,9 @@ navbarPage(
                             )
                 ),
                DT::DTOutput("shukuhaku_data")
-             ))),
+             )),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),
   
   collapsible = TRUE
 )
