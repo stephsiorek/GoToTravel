@@ -83,7 +83,7 @@ function(input, output, session) {
       labs(x = "Date", y = " ", title = paste(mytitle, input$selected_prefecture)) +
       stat_smooth(color = "#FC4E07", fill = "#FC4E07",
                   method = "gam", se = F, size = 0.8) +
-      theme_linedraw()
+      theme_minimal()
   })
   
   output$shukuhaku_plot <- renderPlotly({
@@ -188,7 +188,7 @@ function(input, output, session) {
       scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
       scale_y_continuous(labels = scales::comma) +
       labs(x = "Date", y = "", title = paste(mytitle_2, input$selected_prefecture_2)) +
-      theme_linedraw()
+      theme_minimal()
   })
   
   output$covid_data <- DT::renderDT({
@@ -201,7 +201,9 @@ function(input, output, session) {
   extensions = c('Responsive', 'Buttons'), 
   options = list(responsive = TRUE,
                  buttons = c("csv", "excel", "pdf"),
-                 dom = "Bftip"))
+                 dom = "Bftip",
+                 pageLength = -1,
+                 paging = F))
   
   output$shukuhaku_data <- DT::renderDT({
     Shukuhaku2020 %>% 
@@ -255,6 +257,8 @@ function(input, output, session) {
   extensions = c('Responsive', 'Buttons'), 
   options = list(responsive = TRUE,
                  buttons = c("csv", "excel", "pdf"),
-                 dom = "Bftip"))
+                 dom = "Bftip",
+                 pageLength = -1,
+                 paging = F))
   
 }

@@ -10,6 +10,7 @@ navbarPage(
            fluidPage(
              #titlePanel(""),
              mainPanel(
+                strong("Go To Travel"),
                 div("Go To Travel is a Japanese government subsidy program launched in 2020 to revive the pandemic-hit tourism industry.
                     The government offered Japanese residents reimbursement of part of their accommodation and travel costs,
                     and an additional part of the total travel cost in vouchers to be used for other travel expenses. The program
@@ -115,7 +116,7 @@ navbarPage(
                                        "Non Tourist Occupancy Rate: Accommodation with 30-99 employees" = "Occupancy_NonTourists_30to99",
                                        "Occupancy Rate: Accommodation with over 100 employees" = "Occupancy_over100",
                                        "Tourist Occupancy Rate: Accommodation with over 100 employees" = "Occupancy_Tourists_over100",
-                                       "Non Tourist Occupancy Rate: Accommodation with over 100 employees" = "Occupancy_NonTourists_oevr100",
+                                       "Non Tourist Occupancy Rate: Accommodation with over 100 employees" = "Occupancy_NonTourists_over100",
                                        "Occupancy Rate: Ryokan" = "Occupancy_Ryokan",
                                        "Occupancy Rate: Resort Hotel" = "Occupancy_Resort",
                                        "Occupancy Rate: Business Hotel" = "Occupancy_Business",
