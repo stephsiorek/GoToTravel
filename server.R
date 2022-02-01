@@ -273,8 +273,7 @@ function(input, output, session) {
              "Occupancy Rate: Business Hotel" = Occupancy_Business,
              "Occupancy Rate: City Hotel" = Occupancy_City,
              "Occupancy Rate: Simple Lodging" = Occupancy_Simple,
-             "Occupancy Rate: Accommodation for Companies and Groups" = Occupancy_CompaniesGroups
-             ) %>% 
+             "Occupancy Rate: Accommodation for Companies and Groups" = Occupancy_CompaniesGroups) %>% 
       select(Date, Prefecture, input$selected_column2)
   },
   rownames = F,
