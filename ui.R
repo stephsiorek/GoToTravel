@@ -191,6 +191,28 @@ navbarPage(
            ),
            hr(),
            tags$em("Stefania Siorek, 2022")),
+
+  tabPanel("Comparison",
+           fluidPage(
+             div(
+               selectInput("selected_prefecture_5",
+                           "Selected prefecture:",
+                           choices = c("Aichi", "Akita", "Aomori", "Chiba",
+                                       "Ehime", "Fukui", "Fukuoka", "Fukushima",
+                                       "Gifu", "Gunma", "Hiroshima", "Hokkaido",
+                                       "Hyogo", "Ibaraki", "Ishikawa", "Iwate",
+                                       "Kagawa", "Kagoshima", "Kanagawa", "Kochi",
+                                       "Kumamoto", "Kyoto", "Mie", "Miyagi",
+                                       "Miyazaki", "Nagano", "Nagasaki", "Nara",
+                                       "Niigata", "Oita", "Okayama", "Okinawa",
+                                       "Osaka", "Saga", "Saitama", "Shiga",
+                                       "Shimane", "Shizuoka", "Tochigi", "Tokushima",
+                                       "Tokyo", "Tottori", "Toyama", "Wakayama",
+                                       "Yamagata", "Yamaguchi", "Yamanashi")),
+               style = "position:relative;z-index:10000;"
+             ),
+             withLoader(plotOutput("comparison_plot"), type = "html", loader = "loader4")
+           )),   
   
   tabPanel("COVID-19 Data",
            fluidPage(

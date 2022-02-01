@@ -12,8 +12,10 @@ library("ggplot2")
 # setwd("/Users/steph/Downloads/MGR")
 # load("./Clean Data/KouseiCovid2020.RData")
 # load("./Clean Data/Shukuhaku2020.RData")
+# load("./Clean Data/Covid_Shukuhaku2020.RData")
 load("KouseiCovid2020.RData")
 load("Shukuhaku2020.RData")
+load("Covid_Shukuhaku2020.RData")
 
 function(input, output, session) {
   
@@ -43,6 +45,13 @@ function(input, output, session) {
                  updateSelectInput(session,
                                    "selected_prefecture_4",
                                    selected = input$selected_prefecture_4)
+               })
+  
+  observeEvent(input$selected_prefecture_5,
+               {
+                 updateSelectInput(session,
+                                   "selected_prefecture_5",
+                                   selected = input$selected_prefecture_5)
                })
   
   observeEvent(input$selected_column_1,
@@ -192,6 +201,19 @@ function(input, output, session) {
       labs(x = "Date", y = "", title = paste(mytitle_2, input$selected_prefecture_2)) +
       theme_minimal()
   })
+  
+  output$comparison_plot <- renderPlot({
+    Covid_Shukuhaku2020 %>%
+      filter(Prefecture == input$selected_prefecture_5) %>%
+      mutate(Date = as.POSIXct(Date)) %>%
+      ggplot(., aes(x = Date), group = 1) +
+      geom_line(aes(y = NewlyConfirmedCases, color = "Newly Confirmed Cases")) +
+      geom_line(aes(y = Guests_Total/300, color = "Total Guests")) +
+      scale_y_continuous(name = "Newly Confirmed Cases", sec.axis = sec_axis(trans = ~./10, name = "Total Guests")) +
+      scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
+      labs(x = "Date", y = " ", color = " ", title = paste("Newly Confirmed COVID-19 Cases vs Total Guests in", input$selected_prefecture_5)) +
+      theme_minimal()
+  })  
   
   output$covid_data <- DT::renderDT({
     KouseiCovid2020 %>% 
