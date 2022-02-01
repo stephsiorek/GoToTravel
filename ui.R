@@ -212,7 +212,9 @@ navbarPage(
                style = "position:relative;z-index:10000;"
              ),
              withLoader(plotOutput("comparison_plot"), type = "html", loader = "loader4")
-           )),   
+           ),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),   
   
   tabPanel("COVID-19 Data",
            fluidPage(
