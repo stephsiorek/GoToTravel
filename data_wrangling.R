@@ -8,55 +8,45 @@ if (!file.exists("data")){
   dir.create("data")
 }
 
-# Kousei Roudou Shou; Ministry of Health, Labour and Welfare
+# COVID-19 data download --------------------------------------------------
+
+# Kousei Roudou Shou; Japanese Ministry of Health, Labour and Welfare
 # https://covid19.mhlw.go.jp
-# fileUrl2 <- "https://covid19.mhlw.go.jp/public/opendata/confirmed_cases_cumulative_daily.csv"
-# download.file(fileUrl2, destfile = "./data/KouseiCovid.csv", method = "curl")
+# fileUrl1 <- "https://covid19.mhlw.go.jp/public/opendata/number_of_deaths_daily.csv"
+# download.file(fileUrl1, destfile = "./data/KouseiDeathDaily.csv", method = "curl")
 # list.files("./data")
-# (dateDownloaded2 <- date()) # Fri Aug 6 17:51:03 2021
-KouseiConfirmedCases <- read.csv("./data/KouseiCovid.csv", sep = ",", header = T, fileEncoding = "utf8")
-head(KouseiConfirmedCases)
-
-# fileUrl4 <- "https://covid19.mhlw.go.jp/public/opendata/deaths_cumulative_daily.csv"
-# download.file(fileUrl4, destfile = "./data/KouseiDeath.csv", method = "curl")
-# list.files("./data")
-# (dateDownloaded4 <- date()) # Fri Aug 6 17:57:57 2021
-KouseiDeath <- read.csv("./data/KouseiDeath.csv", sep = ",", header = T, fileEncoding = "utf8")
-head(KouseiDeath)
-
-# fileUrl5 <- "https://covid19.mhlw.go.jp/public/opendata/severe_cases_daily.csv"
-# download.file(fileUrl5, destfile = "./data/KouseiSevere.csv", method = "curl")
-# list.files("./data")
-# (dateDownloaded5 <- date()) # Fri Aug 6 17:59:34 2021
-KouseiSevere <- read.csv("./data/KouseiSevere.csv", sep = ",", header = T, fileEncoding = "utf8")
-head(KouseiSevere)
-
-# fileUrl2_1 <- "https://covid19.mhlw.go.jp/public/opendata/newly_confirmed_cases_daily.csv"
-# download.file(fileUrl2_1, destfile = "./data/KouseiCovid2.csv", method = "curl")
-# list.files("./data")
-# (dateDownloaded2_1 <- date()) # Fri Aug 6 18:11:46 2021 # Sat Nov 20 17:00:50 2021
-KouseiCovid2 <- read.csv("./data/KouseiCovid2.csv", sep = ",", header = T, fileEncoding = "utf8")
-head(KouseiCovid2)
-
-# fileUrl4_1 <- "https://covid19.mhlw.go.jp/public/opendata/number_of_deaths_daily.csv"
-# download.file(fileUrl4_1, destfile = "./data/KouseiDeathDaily.csv", method = "curl")
-# list.files("./data")
-# (dateDownloaded4 <- date()) # Sun Nov 28 16:35:45 2021
+# (dateDownloaded1 <- date()) # Sun Nov 28 16:35:45 2021
 KouseiDeathDaily <- read.csv("./data/KouseiDeathDaily.csv", sep = ",", header = T, fileEncoding = "utf8")
-head(KouseiDeathDaily)
+glimpse(KouseiDeathDaily)
 
-# Kankouchou
+# fileUrl2 <- "https://covid19.mhlw.go.jp/public/opendata/severe_cases_daily.csv"
+# download.file(fileUrl2, destfile = "./data/KouseiSevere.csv", method = "curl")
+# list.files("./data")
+# (dateDownloaded2 <- date()) # Fri Aug 6 17:59:34 2021
+KouseiSevere <- read.csv("./data/KouseiSevere.csv", sep = ",", header = T, fileEncoding = "utf8")
+glimpse(KouseiSevere)
+
+# fileUrl3 <- "https://covid19.mhlw.go.jp/public/opendata/newly_confirmed_cases_daily.csv"
+# download.file(fileUrl3, destfile = "./data/KouseiCovid2.csv", method = "curl")
+# list.files("./data")
+# (dateDownloaded3 <- date()) # Fri Aug 6 18:11:46 2021 # Sat Nov 20 17:00:50 2021
+KouseiCovid2 <- read.csv("./data/KouseiCovid2.csv", sep = ",", header = T, fileEncoding = "utf8")
+glimpse(KouseiCovid2)
+
+# Accommodation data download ---------------------------------------------
+
+# Kankouchou; Japanese Ministry of Land, Infrastructure, Transport and Tourism
 # Shukuhaku ryokou toukei chousa
 # Reiwa 2 nen (2020)
-# fileUrl6 <- "https://www.mlit.go.jp/kankocho/siryou/toukei/content/001411547.xlsx"
-# download.file(fileUrl6, destfile = "./data/shukuhaku2020.xlsx", method = "curl")
+# fileUrl4 <- "https://www.mlit.go.jp/kankocho/siryou/toukei/content/001411547.xlsx"
+# download.file(fileUrl4, destfile = "./data/shukuhaku2020.xlsx", method = "curl")
 # list.files("./data")
-# (dateDownloaded6 <- date()) # Fri Aug 6 18:35:24 2021
+# (dateDownloaded4 <- date()) # Fri Aug 6 18:35:24 2021
 library(xlsx)
 Shukuhaku2020 <- read.xlsx("./data/shukuhaku2020.xlsx", sheetIndex = 2, header = T)
 glimpse(Shukuhaku2020)
 
-# COVID-19 DATA ----------------------------------------------------------
+# COVID-19 DATA WRANGLING  ----------------------------------------------------------
 
 # INFECTIONS
 KouseiCovid2 <- read.csv("./data/KouseiCovid2.csv", sep = ",", header = T, fileEncoding = "utf8")
