@@ -1,14 +1,21 @@
-library("leaflet")
-library("shinycustomloader")
+# library("bslib")
+# library("leaflet")
 library("plotly")
 library("shinycustomloader")
+library("shinythemes")
 
 navbarPage(
   "The impact of the 'Go to Travel' subsidy program on the increase in overall disease transmission in Japan during the 2020 COVID-19 pandemic",
   
   tabPanel("Data Description",
            fluidPage(
-             #titlePanel(""),
+             # theme = shinytheme("paper"),
+             theme = shinytheme("sandstone"),
+             # theme = shinytheme("yeti"),
+             # theme = bs_theme(bg = "#0b3d91", fg = "white", primary = "#FCC780",
+             #                  base_font = font_google("Space Mono"),
+             #                  code_font = font_google("Space Mono")),
+             # titlePanel(""),
              mainPanel(
                 strong("Go To Travel"),
                 div("Go To Travel is a Japanese government subsidy program launched in 2020 to revive the pandemic-hit tourism industry.
