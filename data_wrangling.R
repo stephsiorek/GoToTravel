@@ -101,14 +101,11 @@ KouseiCovid2020 <- merge(KouseiCovid2020, KouseiSevereDaily, all = T)
 save(KouseiCovid2020, file = "./Clean Data/KouseiCovid2020.RData")
 write.csv(KouseiCovid2020, file = "./Clean Data/KouseiCovid2020.csv", row.names = F)
 
-# ACCOMMODATION DATA ---------------------------------------------------------------
+# ACCOMMODATION DATA WRANGLING --------------------------------------------
 
 getwd()
-setwd("/Users/steph/Downloads/MGR/R")
+setwd("/Users/steph/Downloads/MGR/GoToTravel")
 library(dplyr)
-
-#### 宿泊 ####
-
 library(xlsx)
 Shukuhaku2020 <- read.xlsx("./data/shukuhaku2020.xlsx", sheetIndex = 2, header = T)
 head(Shukuhaku2020)
@@ -475,7 +472,7 @@ write.csv(Shukuhaku2020_9, file = "Shukuhaku2020_09.csv", row.names = F)
 
 #### 第9表　2020-10 ####
 library(readxl)
-#Shukuhaku2020_10 <- read_excel("./data/shukuhaku2020.xlsx", sheet = 115, skip = 7, range = c(J7:J20))
+# Shukuhaku2020_10 <- read_excel("./data/shukuhaku2020.xlsx", sheet = 115, skip = 7, range = c(J7:J20))
 Shukuhaku2020_10 <- read_excel("./data/shukuhaku2020.xlsx", sheet = 115, skip = 7)
 glimpse(Shukuhaku2020_10)
 
@@ -595,7 +592,6 @@ save(Shukuhaku2020_12, file = "Shukuhaku2020_12.RData")
 write.csv(Shukuhaku2020_12, file = "Shukuhaku2020_12.csv", row.names = F)
 
 #### 第5表　2020-01 ####
-
 library(readxl)
 Shukuhaku2020_01_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 54, skip = 7)
 glimpse(Shukuhaku2020_01_Type)
@@ -607,7 +603,7 @@ Shukuhaku2020_01_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
 
-#SimpleLodging includes also hostels and capsule hotels
+# Simple Lodging includes also hostels and capsule hotels
 
 Shukuhaku2020_01_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 54, skip = 7, col_names = Shukuhaku2020_01_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_01_Type)
@@ -637,7 +633,6 @@ save(Shukuhaku2020_01_Type, file = "Shukuhaku2020_01_Type.RData")
 write.csv(Shukuhaku2020_01_Type, file = "Shukuhaku2020_01_Type.csv", row.names = F)
 
 #### 第5表　2020-02 ####
-
 library(readxl)
 Shukuhaku2020_02_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 55, skip = 7)
 glimpse(Shukuhaku2020_02_Type)
@@ -648,8 +643,6 @@ Shukuhaku2020_02_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_02_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 55, skip = 7, col_names = Shukuhaku2020_02_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_02_Type)
@@ -679,7 +672,6 @@ save(Shukuhaku2020_02_Type, file = "Shukuhaku2020_02_Type.RData")
 write.csv(Shukuhaku2020_02_Type, file = "Shukuhaku2020_02_Type.csv", row.names = F)
 
 #### 第5表　2020-03 ####
-
 library(readxl)
 Shukuhaku2020_03_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 56, skip = 7)
 glimpse(Shukuhaku2020_03_Type)
@@ -690,8 +682,6 @@ Shukuhaku2020_03_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_03_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 56, skip = 7, col_names = Shukuhaku2020_03_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_03_Type)
@@ -721,7 +711,6 @@ save(Shukuhaku2020_03_Type, file = "Shukuhaku2020_03_Type.RData")
 write.csv(Shukuhaku2020_03_Type, file = "Shukuhaku2020_03_Type.csv", row.names = F)
 
 #### 第5表　2020-04 ####
-
 library(readxl)
 Shukuhaku2020_04_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 57, skip = 7)
 glimpse(Shukuhaku2020_04_Type)
@@ -732,8 +721,6 @@ Shukuhaku2020_04_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_04_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 57, skip = 7, col_names = Shukuhaku2020_04_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_04_Type)
@@ -763,7 +750,6 @@ save(Shukuhaku2020_04_Type, file = "Shukuhaku2020_04_Type.RData")
 write.csv(Shukuhaku2020_04_Type, file = "Shukuhaku2020_04_Type.csv", row.names = F)
 
 #### 第5表　2020-05 ####
-
 library(readxl)
 Shukuhaku2020_05_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 58, skip = 7)
 glimpse(Shukuhaku2020_05_Type)
@@ -774,8 +760,6 @@ Shukuhaku2020_05_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_05_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 58, skip = 7, col_names = Shukuhaku2020_05_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_05_Type)
@@ -805,7 +789,6 @@ save(Shukuhaku2020_05_Type, file = "Shukuhaku2020_05_Type.RData")
 write.csv(Shukuhaku2020_05_Type, file = "Shukuhaku2020_05_Type.csv", row.names = F)
 
 #### 第5表　2020-06 ####
-
 library(readxl)
 Shukuhaku2020_06_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 59, skip = 7)
 glimpse(Shukuhaku2020_06_Type)
@@ -816,8 +799,6 @@ Shukuhaku2020_06_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_06_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 59, skip = 7, col_names = Shukuhaku2020_06_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_06_Type)
@@ -847,7 +828,6 @@ save(Shukuhaku2020_06_Type, file = "Shukuhaku2020_06_Type.RData")
 write.csv(Shukuhaku2020_06_Type, file = "Shukuhaku2020_06_Type.csv", row.names = F)
 
 #### 第5表　2020-07 ####
-
 library(readxl)
 Shukuhaku2020_07_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 60, skip = 7)
 glimpse(Shukuhaku2020_07_Type)
@@ -858,8 +838,6 @@ Shukuhaku2020_07_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_07_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 60, skip = 7, col_names = Shukuhaku2020_07_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_07_Type)
@@ -889,7 +867,6 @@ save(Shukuhaku2020_07_Type, file = "Shukuhaku2020_07_Type.RData")
 write.csv(Shukuhaku2020_07_Type, file = "Shukuhaku2020_07_Type.csv", row.names = F)
 
 #### 第5表　2020-08 ####
-
 library(readxl)
 Shukuhaku2020_08_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 61, skip = 7)
 glimpse(Shukuhaku2020_08_Type)
@@ -900,8 +877,6 @@ Shukuhaku2020_08_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_08_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 61, skip = 7, col_names = Shukuhaku2020_08_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_08_Type)
@@ -931,7 +906,6 @@ save(Shukuhaku2020_08_Type, file = "Shukuhaku2020_08_Type.RData")
 write.csv(Shukuhaku2020_08_Type, file = "Shukuhaku2020_08_Type.csv", row.names = F)
 
 #### 第5表　2020-09 ####
-
 library(readxl)
 Shukuhaku2020_09_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 62, skip = 7)
 glimpse(Shukuhaku2020_09_Type)
@@ -942,8 +916,6 @@ Shukuhaku2020_09_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_09_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 62, skip = 7, col_names = Shukuhaku2020_09_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_09_Type)
@@ -973,7 +945,6 @@ save(Shukuhaku2020_09_Type, file = "Shukuhaku2020_09_Type.RData")
 write.csv(Shukuhaku2020_09_Type, file = "Shukuhaku2020_09_Type.csv", row.names = F)
 
 #### 第5表　2020-10 ####
-
 library(readxl)
 Shukuhaku2020_10_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 63, skip = 7)
 glimpse(Shukuhaku2020_10_Type)
@@ -984,8 +955,6 @@ Shukuhaku2020_10_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_10_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 63, skip = 7, col_names = Shukuhaku2020_10_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_10_Type)
@@ -1015,7 +984,6 @@ save(Shukuhaku2020_10_Type, file = "Shukuhaku2020_10_Type.RData")
 write.csv(Shukuhaku2020_10_Type, file = "Shukuhaku2020_10_Type.csv", row.names = F)
 
 #### 第5表　2020-11 ####
-
 library(readxl)
 Shukuhaku2020_11_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 64, skip = 7)
 glimpse(Shukuhaku2020_11_Type)
@@ -1026,8 +994,6 @@ Shukuhaku2020_11_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_11_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 64, skip = 7, col_names = Shukuhaku2020_11_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_11_Type)
@@ -1057,7 +1023,6 @@ save(Shukuhaku2020_11_Type, file = "Shukuhaku2020_11_Type.RData")
 write.csv(Shukuhaku2020_11_Type, file = "Shukuhaku2020_11_Type.csv", row.names = F)
 
 #### 第5表　2020-12 ####
-
 library(readxl)
 Shukuhaku2020_12_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 65, skip = 7)
 glimpse(Shukuhaku2020_12_Type)
@@ -1068,8 +1033,6 @@ Shukuhaku2020_12_Type_names <- c("Prefecture", "TotalNumberOfGuests", "Ryokan", 
                                  "TotalNumberOfForeignGuests","Ryokan_Foreigners", "ResortHotel_Foreigners", 
                                  "BusinessHotel_Foreigners", "CityHotel_Foreigners", "SimpleLodging_Foreigners",
                                  "AccommodationForCompaniesAndGroups_Foreigners")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_12_Type <- read_excel("./data/shukuhaku2020.xlsx", sheet = 65, skip = 7, col_names = Shukuhaku2020_12_Type_names, n_max = 47)
 glimpse(Shukuhaku2020_12_Type)
@@ -1099,7 +1062,6 @@ save(Shukuhaku2020_12_Type, file = "Shukuhaku2020_12_Type.RData")
 write.csv(Shukuhaku2020_12_Type, file = "Shukuhaku2020_12_Type.csv", row.names = F)
 
 #### 第6表　2020-01 ####
-
 library(readxl)
 Shukuhaku2020_01_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 67, skip = 7)
 glimpse(Shukuhaku2020_01_Occupancy)
@@ -1111,8 +1073,6 @@ Shukuhaku2020_01_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_01_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 67, skip = 7, col_names = Shukuhaku2020_01_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_01_Occupancy)
@@ -1142,7 +1102,6 @@ save(Shukuhaku2020_01_Occupancy, file = "Shukuhaku2020_01_Occupancy.RData")
 write.csv(Shukuhaku2020_01_Occupancy, file = "Shukuhaku2020_01_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-02 ####
-
 library(readxl)
 Shukuhaku2020_02_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 68, skip = 7)
 glimpse(Shukuhaku2020_02_Occupancy)
@@ -1154,8 +1113,6 @@ Shukuhaku2020_02_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_02_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 68, skip = 7, col_names = Shukuhaku2020_02_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_02_Occupancy)
@@ -1185,7 +1142,6 @@ save(Shukuhaku2020_02_Occupancy, file = "Shukuhaku2020_02_Occupancy.RData")
 write.csv(Shukuhaku2020_02_Occupancy, file = "Shukuhaku2020_02_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-03 ####
-
 library(readxl)
 Shukuhaku2020_03_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 69, skip = 7)
 glimpse(Shukuhaku2020_03_Occupancy)
@@ -1197,8 +1153,6 @@ Shukuhaku2020_03_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_03_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 69, skip = 7, col_names = Shukuhaku2020_03_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_03_Occupancy)
@@ -1228,7 +1182,6 @@ save(Shukuhaku2020_03_Occupancy, file = "Shukuhaku2020_03_Occupancy.RData")
 write.csv(Shukuhaku2020_03_Occupancy, file = "Shukuhaku2020_03_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-04 ####
-
 library(readxl)
 Shukuhaku2020_04_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 70, skip = 7)
 glimpse(Shukuhaku2020_04_Occupancy)
@@ -1240,8 +1193,6 @@ Shukuhaku2020_04_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_04_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 70, skip = 7, col_names = Shukuhaku2020_04_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_04_Occupancy)
@@ -1271,7 +1222,6 @@ save(Shukuhaku2020_04_Occupancy, file = "Shukuhaku2020_04_Occupancy.RData")
 write.csv(Shukuhaku2020_04_Occupancy, file = "Shukuhaku2020_04_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-05 ####
-
 library(readxl)
 Shukuhaku2020_05_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 71, skip = 7)
 glimpse(Shukuhaku2020_05_Occupancy)
@@ -1283,8 +1233,6 @@ Shukuhaku2020_05_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_05_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 71, skip = 7, col_names = Shukuhaku2020_05_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_05_Occupancy)
@@ -1314,7 +1262,6 @@ save(Shukuhaku2020_05_Occupancy, file = "Shukuhaku2020_05_Occupancy.RData")
 write.csv(Shukuhaku2020_05_Occupancy, file = "Shukuhaku2020_05_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-06 ####
-
 library(readxl)
 Shukuhaku2020_06_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 72, skip = 7)
 glimpse(Shukuhaku2020_06_Occupancy)
@@ -1326,8 +1273,6 @@ Shukuhaku2020_06_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_06_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 72, skip = 7, col_names = Shukuhaku2020_06_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_06_Occupancy)
@@ -1357,7 +1302,6 @@ save(Shukuhaku2020_06_Occupancy, file = "Shukuhaku2020_06_Occupancy.RData")
 write.csv(Shukuhaku2020_06_Occupancy, file = "Shukuhaku2020_06_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-07 ####
-
 library(readxl)
 Shukuhaku2020_07_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 73, skip = 7)
 glimpse(Shukuhaku2020_07_Occupancy)
@@ -1369,8 +1313,6 @@ Shukuhaku2020_07_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_07_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 73, skip = 7, col_names = Shukuhaku2020_07_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_07_Occupancy)
@@ -1400,7 +1342,6 @@ save(Shukuhaku2020_07_Occupancy, file = "Shukuhaku2020_07_Occupancy.RData")
 write.csv(Shukuhaku2020_07_Occupancy, file = "Shukuhaku2020_07_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-08 ####
-
 library(readxl)
 Shukuhaku2020_08_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 74, skip = 7)
 glimpse(Shukuhaku2020_08_Occupancy)
@@ -1412,8 +1353,6 @@ Shukuhaku2020_08_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_08_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 74, skip = 7, col_names = Shukuhaku2020_08_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_08_Occupancy)
@@ -1443,7 +1382,6 @@ save(Shukuhaku2020_08_Occupancy, file = "Shukuhaku2020_08_Occupancy.RData")
 write.csv(Shukuhaku2020_08_Occupancy, file = "Shukuhaku2020_08_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-09 ####
-
 library(readxl)
 Shukuhaku2020_09_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 75, skip = 7)
 glimpse(Shukuhaku2020_09_Occupancy)
@@ -1455,8 +1393,6 @@ Shukuhaku2020_09_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_09_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 75, skip = 7, col_names = Shukuhaku2020_09_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_09_Occupancy)
@@ -1486,7 +1422,6 @@ save(Shukuhaku2020_09_Occupancy, file = "Shukuhaku2020_09_Occupancy.RData")
 write.csv(Shukuhaku2020_09_Occupancy, file = "Shukuhaku2020_09_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-10 ####
-
 library(readxl)
 Shukuhaku2020_10_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 76, skip = 7)
 glimpse(Shukuhaku2020_10_Occupancy)
@@ -1498,8 +1433,6 @@ Shukuhaku2020_10_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_10_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 76, skip = 7, col_names = Shukuhaku2020_10_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_10_Occupancy)
@@ -1529,7 +1462,6 @@ save(Shukuhaku2020_10_Occupancy, file = "Shukuhaku2020_10_Occupancy.RData")
 write.csv(Shukuhaku2020_10_Occupancy, file = "Shukuhaku2020_10_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-11 ####
-
 library(readxl)
 Shukuhaku2020_11_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 77, skip = 7)
 glimpse(Shukuhaku2020_11_Occupancy)
@@ -1541,8 +1473,6 @@ Shukuhaku2020_11_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_11_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 77, skip = 7, col_names = Shukuhaku2020_11_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_11_Occupancy)
@@ -1572,7 +1502,6 @@ save(Shukuhaku2020_11_Occupancy, file = "Shukuhaku2020_11_Occupancy.RData")
 write.csv(Shukuhaku2020_11_Occupancy, file = "Shukuhaku2020_11_Occupancy.csv", row.names = F)
 
 #### 第6表　2020-12 ####
-
 library(readxl)
 Shukuhaku2020_12_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 78, skip = 7)
 glimpse(Shukuhaku2020_12_Occupancy)
@@ -1584,8 +1513,6 @@ Shukuhaku2020_12_Occupancy_names <- c("Prefecture", "CapacityOccupancyRate", "Ov
                                       "Occupancy_over100", "Tourists_over100", "NonTourists_over100",
                                       "Ryokan", "ResortHotel", "BusinessHotel", "CityHotel", "SimpleLodging",
                                       "AccommodationForCompaniesAndGroups")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_12_Occupancy <- read_excel("./data/shukuhaku2020.xlsx", sheet = 78, skip = 7, col_names = Shukuhaku2020_12_Occupancy_names, n_max = 47)
 glimpse(Shukuhaku2020_12_Occupancy)
@@ -1616,7 +1543,6 @@ write.csv(Shukuhaku2020_12_Occupancy, file = "Shukuhaku2020_12_Occupancy.csv", r
 
 
 #### 第10表　2020-01 ####
-
 library(readxl)
 Shukuhaku2020_01_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 119, skip = 7)
 glimpse(Shukuhaku2020_01_TypeResidence)
@@ -1629,8 +1555,6 @@ Shukuhaku2020_01_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_01_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 119, skip = 7, col_names = Shukuhaku2020_01_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_01_TypeResidence)
@@ -1660,7 +1584,6 @@ save(Shukuhaku2020_01_TypeResidence, file = "Shukuhaku2020_01_TypeResidence.RDat
 write.csv(Shukuhaku2020_01_TypeResidence, file = "Shukuhaku2020_01_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-02 ####
-
 library(readxl)
 Shukuhaku2020_02_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 120, skip = 7)
 glimpse(Shukuhaku2020_02_TypeResidence)
@@ -1673,8 +1596,6 @@ Shukuhaku2020_02_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_02_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 120, skip = 7, col_names = Shukuhaku2020_02_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_02_TypeResidence)
@@ -1704,7 +1625,6 @@ save(Shukuhaku2020_02_TypeResidence, file = "Shukuhaku2020_02_TypeResidence.RDat
 write.csv(Shukuhaku2020_02_TypeResidence, file = "Shukuhaku2020_02_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-03 ####
-
 library(readxl)
 Shukuhaku2020_03_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 121, skip = 7)
 glimpse(Shukuhaku2020_03_TypeResidence)
@@ -1717,8 +1637,6 @@ Shukuhaku2020_03_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_03_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 121, skip = 7, col_names = Shukuhaku2020_03_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_03_TypeResidence)
@@ -1748,7 +1666,6 @@ save(Shukuhaku2020_03_TypeResidence, file = "Shukuhaku2020_03_TypeResidence.RDat
 write.csv(Shukuhaku2020_03_TypeResidence, file = "Shukuhaku2020_03_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-04 ####
-
 library(readxl)
 Shukuhaku2020_04_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 122, skip = 7)
 glimpse(Shukuhaku2020_04_TypeResidence)
@@ -1761,8 +1678,6 @@ Shukuhaku2020_04_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_04_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 122, skip = 7, col_names = Shukuhaku2020_04_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_04_TypeResidence)
@@ -1792,7 +1707,6 @@ save(Shukuhaku2020_04_TypeResidence, file = "Shukuhaku2020_04_TypeResidence.RDat
 write.csv(Shukuhaku2020_04_TypeResidence, file = "Shukuhaku2020_04_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-05 ####
-
 library(readxl)
 Shukuhaku2020_05_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 123, skip = 7)
 glimpse(Shukuhaku2020_05_TypeResidence)
@@ -1805,8 +1719,6 @@ Shukuhaku2020_05_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_05_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 123, skip = 7, col_names = Shukuhaku2020_05_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_05_TypeResidence)
@@ -1836,7 +1748,6 @@ save(Shukuhaku2020_05_TypeResidence, file = "Shukuhaku2020_05_TypeResidence.RDat
 write.csv(Shukuhaku2020_05_TypeResidence, file = "Shukuhaku2020_05_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-06 ####
-
 library(readxl)
 Shukuhaku2020_06_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 124, skip = 7)
 glimpse(Shukuhaku2020_06_TypeResidence)
@@ -1849,8 +1760,6 @@ Shukuhaku2020_06_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_06_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 124, skip = 7, col_names = Shukuhaku2020_06_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_06_TypeResidence)
@@ -1880,7 +1789,6 @@ save(Shukuhaku2020_06_TypeResidence, file = "Shukuhaku2020_06_TypeResidence.RDat
 write.csv(Shukuhaku2020_06_TypeResidence, file = "Shukuhaku2020_06_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-07 ####
-
 library(readxl)
 Shukuhaku2020_07_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 125, skip = 7)
 glimpse(Shukuhaku2020_07_TypeResidence)
@@ -1893,8 +1801,6 @@ Shukuhaku2020_07_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_07_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 125, skip = 7, col_names = Shukuhaku2020_07_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_07_TypeResidence)
@@ -1924,7 +1830,6 @@ save(Shukuhaku2020_07_TypeResidence, file = "Shukuhaku2020_07_TypeResidence.RDat
 write.csv(Shukuhaku2020_07_TypeResidence, file = "Shukuhaku2020_07_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-08 ####
-
 library(readxl)
 Shukuhaku2020_08_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 126, skip = 7)
 glimpse(Shukuhaku2020_08_TypeResidence)
@@ -1937,8 +1842,6 @@ Shukuhaku2020_08_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_08_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 126, skip = 7, col_names = Shukuhaku2020_08_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_08_TypeResidence)
@@ -1968,7 +1871,6 @@ save(Shukuhaku2020_08_TypeResidence, file = "Shukuhaku2020_08_TypeResidence.RDat
 write.csv(Shukuhaku2020_08_TypeResidence, file = "Shukuhaku2020_08_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-09 ####
-
 library(readxl)
 Shukuhaku2020_09_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 127, skip = 7)
 glimpse(Shukuhaku2020_09_TypeResidence)
@@ -1981,8 +1883,6 @@ Shukuhaku2020_09_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_09_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 127, skip = 7, col_names = Shukuhaku2020_09_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_09_TypeResidence)
@@ -2012,7 +1912,6 @@ save(Shukuhaku2020_09_TypeResidence, file = "Shukuhaku2020_09_TypeResidence.RDat
 write.csv(Shukuhaku2020_09_TypeResidence, file = "Shukuhaku2020_09_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-10 ####
-
 library(readxl)
 Shukuhaku2020_10_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 128, skip = 7)
 glimpse(Shukuhaku2020_10_TypeResidence)
@@ -2025,8 +1924,6 @@ Shukuhaku2020_10_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_10_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 128, skip = 7, col_names = Shukuhaku2020_10_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_10_TypeResidence)
@@ -2056,7 +1953,6 @@ save(Shukuhaku2020_10_TypeResidence, file = "Shukuhaku2020_10_TypeResidence.RDat
 write.csv(Shukuhaku2020_10_TypeResidence, file = "Shukuhaku2020_10_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-11 ####
-
 library(readxl)
 Shukuhaku2020_11_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 129, skip = 7)
 glimpse(Shukuhaku2020_11_TypeResidence)
@@ -2069,8 +1965,6 @@ Shukuhaku2020_11_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_11_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 129, skip = 7, col_names = Shukuhaku2020_11_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_11_TypeResidence)
@@ -2100,7 +1994,6 @@ save(Shukuhaku2020_11_TypeResidence, file = "Shukuhaku2020_11_TypeResidence.RDat
 write.csv(Shukuhaku2020_11_TypeResidence, file = "Shukuhaku2020_11_TypeResidence.csv", row.names = F)
 
 #### 第10表　2020-12 ####
-
 library(readxl)
 Shukuhaku2020_12_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 130, skip = 7)
 glimpse(Shukuhaku2020_12_TypeResidence)
@@ -2113,8 +2006,6 @@ Shukuhaku2020_12_TypeResidence_names <- c("Prefecture", "TotalNumberOfGuests", "
                                           "CityHotel_OutsideOfThePrefecture", "SimpleLodging", "SimpleLodging_FromThePrefecture", "SimpleLodging_OutsideThePrefecture", 
                                           "AccommodationForCompaniesAndGroups", "AccommodationForCompaniesAndGroups_FromThePrefecture",
                                           "AccommodationForCompaniesAndGroups_OutsideOfThePrefecture")
-
-#SimpleLodging includes also hostels and capsule hotels
 
 Shukuhaku2020_12_TypeResidence <- read_excel("./data/shukuhaku2020.xlsx", sheet = 130, skip = 7, col_names = Shukuhaku2020_12_TypeResidence_names, n_max = 47)
 glimpse(Shukuhaku2020_12_TypeResidence)
@@ -2145,7 +2036,6 @@ write.csv(Shukuhaku2020_12_TypeResidence, file = "Shukuhaku2020_12_TypeResidence
 
 
 # ACCOMMODATION DATA CLEANING ---------------------------------------------
-
 load("./Shukuhaku2020_01.RData")
 load("./Shukuhaku2020_02.RData")
 load("./Shukuhaku2020_03.RData")
@@ -2278,8 +2168,7 @@ Shukuhaku2020_1_12 %>%
 save(Shukuhaku2020, file = "./Clean Data/Shukuhaku2020.RData")
 write.csv(Shukuhaku2020, file = "./Clean Data/Shukuhaku2020.csv", row.names = F)
 
-# SHUKUHAKU TYPE RESIDENCE ----------------------------------------------------------
-
+# ACCOMMODATION DATA CLEANING: TypeResidence ------------------------------
 load("./Shukuhaku2020_01_TypeResidenceResidence.RData")
 load("./Shukuhaku2020_02_TypeResidenceResidence.RData")
 load("./Shukuhaku2020_03_TypeResidenceResidence.RData")
@@ -2548,8 +2437,7 @@ Shukuhaku2020_TR -> Shukuhaku2020
 save(Shukuhaku2020, file = "./Clean Data/Shukuhaku2020.RData")
 write.csv(Shukuhaku2020, file = "./Clean Data/Shukuhaku2020.csv", row.names = F)
 
-# SHUKUHAKU OCCUPANCY -----------------------------------------------------
-
+# ACCOMMODATION DATA CLEANING: Occupancy ----------------------------------
 load("./Shukuhaku2020_01_Occupancy.RData")
 load("./Shukuhaku2020_02_Occupancy.RData")
 load("./Shukuhaku2020_03_Occupancy.RData")
@@ -2718,18 +2606,15 @@ Shukuhaku2020_OC -> Shukuhaku2020
 save(Shukuhaku2020, file = "./Clean Data/Shukuhaku2020.RData")
 write.csv(Shukuhaku2020, file = "./Clean Data/Shukuhaku2020.csv", row.names = F)
 
-
-# CLEANING DATA FOR COMPARISON PLOTS --------------------------------------
-
+# DATA CLEANING FOR COMPARISON PLOTS --------------------------------------
 library(dplyr)
 library(ggplot2)
 library(plotly)
+library(lubridate)
 getwd()
 setwd("/Users/steph/Downloads/MGR")
 load("./Clean Data/KouseiCovid2020.RData")
 load("./Clean Data/Shukuhaku2020.RData")
-
-library(lubridate)
 
 KouseiCovid2020 %>% 
   mutate(Date = as.POSIXct(Date)) %>% 
@@ -2761,11 +2646,14 @@ setwd("/Users/steph/Downloads/MGR/GoToTravel")
 
 library(dplyr)
 
+# COVID-19 data
 KouseiCovid2020 <- read.csv("./KouseiCovid2020.csv", sep = ",", header = T, fileEncoding = "utf8")
 load("./KouseiCovid2020.RData")
 
+# Accommodation data
 Shukuhaku2020 <- read.csv("./Shukuhaku2020.csv", sep = ",", header = T, fileEncoding = "utf8")
 load("./Shukuhaku2020.RData")
 
+# COVID-19 + Accommodation data for comparison plots
 Covid_Shukuhaku2020 <- read.csv("./Covid_Shukuhaku2020.csv", sep = ",", header = T, fileEncoding = "utf8")
 load("./Clean Data/Covid_Shukuhaku2020.RData")
