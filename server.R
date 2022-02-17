@@ -9,11 +9,13 @@ library("tidyverse")
 # library("rnaturalearthdata")
 # library("sf")
 
+# for running the app locally:
 # setwd("/Users/steph/Downloads/MGR")
 # load("./Clean Data/KouseiCovid2020.RData")
 # load("./Clean Data/Shukuhaku2020.RData")
 # load("./Clean Data/Covid_Shukuhaku2020.RData")
 
+# for deploying the app on the server:
 load("KouseiCovid2020.RData")
 load("Shukuhaku2020.RData")
 load("Covid_Shukuhaku2020.RData")
