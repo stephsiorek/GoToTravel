@@ -95,8 +95,9 @@ function(input, output, session) {
       scale_x_datetime(date_labels = "%Y-%m", date_breaks = "1 month") +
       scale_y_continuous(labels = scales::comma) +
       labs(x = "Date", y = " ", title = paste(mytitle, input$selected_prefecture)) +
-      stat_smooth(color = "#FC4E07", fill = "#FC4E07",
+      stat_smooth(aes(color = "Moving Average"),
                   method = "gam", se = F, size = 0.8) +
+      scale_color_manual(name = "Legend", values = "red") +
       theme_minimal()
   })
   
