@@ -247,7 +247,9 @@ navbarPage(
              leafletOutput("maps"),
              span(textOutput("textmapsguests"), style = "color:red"),
              leafletOutput("mapsguests")
-           )),
+           ),
+           hr(),
+           tags$em("Stefania Siorek, 2022")),
   
   tabPanel("COVID-19 Data",
            fluidPage(
