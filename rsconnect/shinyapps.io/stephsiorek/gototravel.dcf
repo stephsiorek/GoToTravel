@@ -5,7 +5,7 @@ account: stephsiorek
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5550086
-bundleId: 5634297
+bundleId: 5672380
 url: https://stephsiorek.shinyapps.io/gototravel/
-when: 1646249705.90707
-lastSyncTime: 1646249705.90708
+when: 1647015135.08159
+lastSyncTime: 1647015135.08161
