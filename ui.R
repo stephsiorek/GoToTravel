@@ -1,5 +1,5 @@
 # library("bslib")
-# library("leaflet")
+library("leaflet")
 library("plotly")
 library("shinycustomloader")
 library("shinythemes")
@@ -221,7 +221,33 @@ navbarPage(
              withLoader(plotOutput("comparison_plot"), type = "html", loader = "loader4")
            ),
            hr(),
-           tags$em("Stefania Siorek, 2022")),   
+           tags$em("Stefania Siorek, 2022")),
+  
+  tabPanel("Comparison Maps",
+           fluidPage(
+             div(
+               selectInput("selected_date_maps",
+                           "Selected date:",
+                           choices = c("January 2020" = "2020-01-01",
+                                       "February 2020" = "2020-02-01",
+                                       "March 2020" = "2020-03-01",
+                                       "April 2020" = "2020-04-01",
+                                       "May 2020" = "2020-05-01",
+                                       "June 2020" = "2020-06-01",
+                                       "July 2020" = "2020-07-01",
+                                       "August 2020" = "2020-08-01",
+                                       "September 2020" = "2020-09-01",
+                                       "October 2020" = "2020-10-01",
+                                       "November 2020" = "2020-11-01",
+                                       "December 2020" = "2020-12-01"
+                           )),
+               style = "position:relative;z-index:10000;"
+             ),
+             span(textOutput("textmaps"), style = "color:red"),
+             leafletOutput("maps"),
+             span(textOutput("textmapsguests"), style = "color:red"),
+             leafletOutput("mapsguests")
+           )),
   
   tabPanel("COVID-19 Data",
            fluidPage(

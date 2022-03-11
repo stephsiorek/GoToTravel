@@ -1,24 +1,27 @@
 library("dplyr")
 library("DT")
 library("ggplot2")
+library("htmltools")
 library("kableExtra")
+library("leaflet")
 library("plotly")
+library("sf")
 library("tidyverse")
-# library("leaflet")
 # library("leaflet.extras")
 # library("rnaturalearthdata")
-# library("sf")
 
 # for running the app locally:
 # setwd("/Users/steph/Downloads/MGR")
 # load("./Clean Data/KouseiCovid2020.RData")
 # load("./Clean Data/Shukuhaku2020.RData")
 # load("./Clean Data/Covid_Shukuhaku2020.RData")
+# load("./GoToTravel/shape.RData")
 
 # for deploying the app on the server:
 load("KouseiCovid2020.RData")
 load("Shukuhaku2020.RData")
 load("Covid_Shukuhaku2020.RData")
+load("shape.RData")
 
 function(input, output, session) {
   
@@ -69,6 +72,13 @@ function(input, output, session) {
                  updateSelectInput(session,
                                    "selected_column_2",
                                    selected = input$selected_column_2)
+               })
+  
+  observeEvent(input$selected_date_maps,
+               {
+                 updateSelectInput(session,
+                                   "selected_date_maps",
+                                   selected = input$selected_date_maps)
                })
   
   output$covid_plot <- renderPlotly({
@@ -287,5 +297,73 @@ function(input, output, session) {
                  dom = "Bftip",
                  pageLength = -1,
                  paging = F))
+  
+  data <- reactive({
+    x <- shape %>%
+      filter(Date == input$selected_date_maps)
+    x
+  })
+  
+  output$maps <- renderLeaflet({
+    shape_filtered <- data()
+    
+    bins <- c(0, 100, 200, 500, 1000, 2000, 5000, 10000, 20000)
+    pal <- colorBin("YlOrRd", domain = shape_filtered$NewlyConfirmedCases, bins = bins)
+    
+    labels <- sprintf("<strong>%s</strong><br/>%s new COVID-19 cases",
+                      shape_filtered$ADM1_EN, shape_filtered$NewlyConfirmedCases) %>% lapply(htmltools::HTML)
+    
+    out <- leaflet(shape_filtered) %>%
+      setView(lng = 138.129731, lat = 38.0615855, zoom = 5) %>%
+      addProviderTiles("Esri.WorldStreetMap") %>%
+      addPolygons(fillColor = ~pal(shape_filtered$NewlyConfirmedCases), stroke = F,
+                  weight = 2, opacity = 1, color = "white", dashArray = 3,
+                  fillOpacity = 0.7,
+                  highlightOptions = highlightOptions(weight = 5,
+                                                      color = "#666",
+                                                      dashArray = "",
+                                                      fillOpacity = 0.7,
+                                                      bringToFront = T),
+                  label = labels,
+                  labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),
+                                              textsize = "15px",
+                                              direction = "auto"))
+    out
+  })
+  
+  output$mapsguests <- renderLeaflet({
+    shape_filtered <- data()
+    
+    bins <- c(0, 100000, 200000, 500000, 1000000, 2000000, 5000000, 7000000, 10000000)
+    pal <- colorBin("YlOrRd", domain = shape_filtered$Guests_Total, bins = bins)
+    
+    labels <- sprintf("<strong>%s</strong><br/>%s total guests",
+                      shape_filtered$ADM1_EN, shape_filtered$Guests_Total) %>% lapply(htmltools::HTML)
+    
+    out <- leaflet(shape_filtered) %>%
+      setView(lng = 138.129731, lat = 38.0615855, zoom = 5) %>%
+      addProviderTiles("Esri.WorldStreetMap") %>%
+      addPolygons(fillColor = ~pal(shape_filtered$Guests_Total), stroke = F,
+                  weight = 2, opacity = 1, color = "white", dashArray = 3,
+                  fillOpacity = 0.7,
+                  highlightOptions = highlightOptions(weight = 5,
+                                                      color = "#666",
+                                                      dashArray = "",
+                                                      fillOpacity = 0.7,
+                                                      bringToFront = T),
+                  label = labels,
+                  labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),
+                                              textsize = "15px",
+                                              direction = "auto"))
+    out
+  })
+  
+  output$textmaps <- renderText({
+    paste("Number of New COVID-19 cases")
+  })
+  
+  output$textmapsguests <- renderText({
+    paste("Number of Guests")
+  })
   
 }
