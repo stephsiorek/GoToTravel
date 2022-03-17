@@ -18,6 +18,7 @@ library("tidyverse")
 # load("./GoToTravel/shape.RData")
 
 # for deploying the app on the server:
+# rsconnect::deployApp('/Users/steph/Downloads/MGR/GoToTravel')
 load("KouseiCovid2020.RData")
 load("Shukuhaku2020.RData")
 load("Covid_Shukuhaku2020.RData")
@@ -327,7 +328,12 @@ function(input, output, session) {
                   label = labels,
                   labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),
                                               textsize = "15px",
-                                              direction = "auto"))
+                                              direction = "auto")) %>% 
+      addLegend(pal = pal,
+                values = ~shape_filtered$NewlyConfirmedCases,
+                opacity = 0.7,
+                title = NULL,
+                position = "bottomright")
     out
   })
   
@@ -354,7 +360,12 @@ function(input, output, session) {
                   label = labels,
                   labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),
                                               textsize = "15px",
-                                              direction = "auto"))
+                                              direction = "auto")) %>% 
+      addLegend(pal = pal,
+                values = ~shape_filtered$Guests_Total,
+                opacity = 0.7,
+                title = NULL,
+                position = "bottomright")
     out
   })
   
