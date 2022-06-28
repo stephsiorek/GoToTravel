@@ -6,6 +6,7 @@ library("kableExtra")
 library("leaflet")
 library("plotly")
 library("sf")
+library("thematic")
 library("tidyverse")
 # library("leaflet.extras")
 # library("rnaturalearthdata")
@@ -25,6 +26,8 @@ load("Covid_Shukuhaku2020.RData")
 load("shape.RData")
 
 function(input, output, session) {
+  
+  thematic::thematic_shiny()
   
   observeEvent(input$selected_prefecture,
                {

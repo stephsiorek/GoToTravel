@@ -97,7 +97,7 @@ navbarPage(
            hr(),
            tags$em("Stefania Siorek, 2022")),
   
-  tabPanel("COVID-19 Infections",
+  tabPanel("COVID-19 Plot",
            fluidPage(
              div(
                selectInput("selected_prefecture",
@@ -128,7 +128,7 @@ navbarPage(
            hr(),
            tags$em("Stefania Siorek, 2022")),
   
-  tabPanel("Accommodation",
+  tabPanel("Accommodation Plot",
            fluidPage(
              div(
                selectInput("selected_prefecture_2",
@@ -199,7 +199,7 @@ navbarPage(
            hr(),
            tags$em("Stefania Siorek, 2022")),
 
-  tabPanel("Comparison",
+  tabPanel("Comparison Plot",
            fluidPage(
              div(
                selectInput("selected_prefecture_5",
